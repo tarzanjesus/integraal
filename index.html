@@ -100,7 +100,7 @@ H5P.DragNBarElement=function(s,o){function t(t,i,e){var n=this;o.call(this),this
                       
                        var score = dados.split("result");
                        console.log(score[1]);
-                        getData.postMessage(score[1]);
+                       getData.postMessage(score[1]);
                        
                       
             
@@ -112,6 +112,7 @@ H5P.DragNBarElement=function(s,o){function t(t,i,e){var n=this;o.call(this),this
         
             var video = H5P.instances[0].video;
             var intervalo;
+            getDuration.postMessage(video.getDuration());
         
               video.on('stateChange', function (e) {
               switch (e.data) {
@@ -121,16 +122,17 @@ H5P.DragNBarElement=function(s,o){function t(t,i,e){var n=this;o.call(this),this
                   break;
         
                 case H5P.Video.PLAYING:
-                getDuration.postMessage(H5P.instances[0].getDuration());
+           
                 intervalo = setInterval(function(){ 
               getTime.postMessage(video.getCurrentTime());
               
                 }, 30);
+                console.log(video.getDuration());
                 console.log(intervalo);
                   break;
         
                 case H5P.Video.PAUSED:
-                  getPause.postMessage('pause');
+                 getPause.postMessage('pause');
                 clearInterval(intervalo);
         
                   break;
