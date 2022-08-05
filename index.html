@@ -112,6 +112,7 @@ H5P.DragNBarElement=function(s,o){function t(t,i,e){var n=this;o.call(this),this
         
             var video = H5P.instances[0].video;
             var intervalo;
+            getTotalTime.postMessage(video.getDuration());
             
         
               video.on('stateChange', function (e) {
@@ -124,11 +125,11 @@ H5P.DragNBarElement=function(s,o){function t(t,i,e){var n=this;o.call(this),this
                 case H5P.Video.PLAYING:
            
                 intervalo = setInterval(function(){ 
-                  getDuration.postMessage(video.getDuration());
+              
                 getTime.postMessage(video.getCurrentTime());
               
                 }, 30);
-                console.log(video.getDuration());
+                
                 console.log(intervalo);
                   break;
         
