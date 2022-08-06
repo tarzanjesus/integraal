@@ -112,11 +112,12 @@ H5P.DragNBarElement=function(s,o){function t(t,i,e){var n=this;o.call(this),this
         
             var video = H5P.instances[0].video;
             var intervalo;
-            getTotalTime.postMessage(video.getDuration());
-            console.log(video.getDuration());
+          
             
         
               video.on('stateChange', function (e) {
+                getTotalTime.postMessage(video.getDuration());
+            console.log(video.getDuration());
               switch (e.data) {
                 case H5P.Video.BUFFERING:
                   clearInterval(intervalo);
